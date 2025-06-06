@@ -14,8 +14,8 @@ public class Enemy {
     public enum EnemyType {
         BLUE_DEMON(150, 2f, 0.3f, "Models/Characters/BlueDemon.j3o", 8),
         DEMON(90, 3f, 0.3f, "Models/Characters/Demon.j3o", 12),
-        ORC_SKULL(400, 3f, 0.6f, "Models/Characters/Orc_Skull.j3o", 25),
-        GHOST_SKULL(200, 4f, 0.6f, "Models/Characters/Ghost_Skull.j3o", 50),
+        ORC_SKULL(450, 3f, 0.6f, "Models/Characters/Orc_Skull.j3o", 25),
+        GHOST_SKULL(250, 4f, 0.6f, "Models/Characters/Ghost_Skull.j3o", 50),
         DRAGON_EVOLVED(1000, 3f, 1.5f, "Models/Characters/Dragon_Evolved.j3o", 100);
 
         public final int maxHealth;
