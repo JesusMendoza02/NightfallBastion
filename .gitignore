@@ -1,0 +1,66 @@
+# IDEs
+.nb-gradle/
+.gradle/
+.idea/
+.vscode/
+*.iml
+
+# NetBeans
+nbproject/private/
+nbproject/build-impl.xml
+build/
+dist/
+out/
+private/
+
+# VSCode project files
+.classpath
+.project
+.settings/
+
+# Compiled class files
+*.class
+*.jtxt
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# JME3 generated and build artifacts
+**/build/
+**/bin/
+**/dist/
+**/out/
+*.dll
+*.so
+*.jnilib
+*.dylib
+
+# Bullet native and temporary files (jME3)
+jme3-bullet-native/bullet3.zip
+jme3-bullet-native/bullet3-*/
+jme3-bullet-native/src/native/cpp/com_jme3_bullet_*.h
+jme3-*/build/
+jme3-*/bin/
+jme3-android-native/openal-soft/
+jme3-android-native/OpenALSoft.zip
+jme3-android-native/src/native/jme_decode/STBI/
+jme3-android-native/src/native/jme_decode/Tremor/
+jme3-android-native/stb_image.h
+
+# Exceptions (keep necessary runtime libs for jme3-vr if any)
+!/jme3-vr/src/main/resources/**/*.dylib
+!/jme3-vr/src/main/resources/**/*.so
+!/jme3-vr/src/main/resources/**/*.so.dbg
+!/jme3-vr/src/main/resources/**/*.dll
+!/jme3-vr/src/main/resources/**/*.pdb
+
+# Build scripts
+buildMaven.bat
+
+# Documentation builds (optional)
+javadoc_deploy
+javadoc_deploy.pub
+
+# CI/CD
+.tra
