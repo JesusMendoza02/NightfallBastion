@@ -8,6 +8,7 @@ import com.jme3.math.FastMath;
 import com.jme3.math.Vector3f;
 import com.jme3.scene.Node;
 import com.jme3.scene.Spatial;
+import mygame.utils.Constants;
 
 public class Player {
     private Spatial model;
@@ -18,15 +19,7 @@ public class Player {
     // Variables para controlar el ataque
     private boolean isAttacking = false;
     private float attackTimer = 0f;
-    private static final float ATTACK_DURATION = 1.0f; // Duración del ataque en segundos
-    
-    // Configuración mejorada de físicas
-    private static final float CAPSULE_RADIUS = 0.02f;
-    private static final float CAPSULE_HEIGHT = 0.02f;
-    private static final float STEP_HEIGHT = 0.1f;
-    private static final float JUMP_SPEED = 8f;
-    private static final float FALL_SPEED = 20.0f;
-    private static final float GRAVITY = 20.0f;
+
 
     public Player(AssetManager assetManager) {
         loadModel(assetManager);
@@ -42,13 +35,13 @@ public class Player {
     
     private void setupPhysics() {
         // Crear cápsula de colisión más realista
-        CapsuleCollisionShape capsule = new CapsuleCollisionShape(CAPSULE_RADIUS, CAPSULE_HEIGHT, 1);
-        characterControl = new CharacterControl(capsule, STEP_HEIGHT);
+        CapsuleCollisionShape capsule = new CapsuleCollisionShape(Constants.CAPSULE_RADIUS, Constants.CAPSULE_HEIGHT, 1);
+        characterControl = new CharacterControl(capsule, Constants.STEP_HEIGHT);
         
         // Configurar parámetros de movimiento
-        characterControl.setJumpSpeed(JUMP_SPEED);
-        characterControl.setFallSpeed(FALL_SPEED);
-        characterControl.setGravity(GRAVITY);
+        characterControl.setJumpSpeed(Constants.JUMP_SPEED);
+        characterControl.setFallSpeed(Constants.FALL_SPEED);
+        characterControl.setGravity(Constants.GRAVITY);
         characterControl.setPhysicsLocation(new Vector3f(0, 3f, 0));
         
         // Mejorar la respuesta del movimiento
@@ -169,7 +162,7 @@ public class Player {
     public void update(float tpf) {
         if (isAttacking) {
             attackTimer += tpf;
-            if (attackTimer >= ATTACK_DURATION) {
+            if (attackTimer >= Constants.ATTACK_DURATION) {
                 isAttacking = false;
                 attackTimer = 0f;
                 // Volver a idle después del ataque

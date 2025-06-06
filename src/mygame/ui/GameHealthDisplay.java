@@ -7,6 +7,7 @@ import com.jme3.asset.AssetManager;
 import com.jme3.system.AppSettings;
 import mygame.entities.Castle;
 import mygame.entities.Boss;
+import mygame.utils.Constants;
 
 public class GameHealthDisplay {
     private final HealthBar castleBar;
@@ -14,11 +15,6 @@ public class GameHealthDisplay {
     private final Castle castle;
     private Boss boss;
     
-    // Configuración común
-    private static final float BAR_WIDTH = 350f;
-    private static final float BAR_HEIGHT = 25f;
-    private static final float CASTLE_BAR_Y = 30f;
-    private static final float BOSS_BAR_Y = 70f;
 
     public GameHealthDisplay(Castle castle, Node guiNode, BitmapFont font, 
                            AssetManager assetManager, AppSettings settings) {
@@ -40,14 +36,14 @@ public class GameHealthDisplay {
     private HealthBar createHealthBar(AssetManager assetManager, Node guiNode, 
                                     BitmapFont font, String label, 
                                     ColorRGBA bgColor, ColorRGBA fgColor) {
-        return new HealthBar(assetManager, guiNode, BAR_WIDTH, BAR_HEIGHT, 
+        return new HealthBar(assetManager, guiNode, Constants.BAR_WIDTH, Constants.BAR_HEIGHT, 
                            bgColor, fgColor, font, label);
     }
 
     private void positionBars(AppSettings settings) {
-        float centerX = (settings.getWidth() - BAR_WIDTH) / 2;
-        castleBar.setPosition(centerX, CASTLE_BAR_Y);
-        bossBar.setPosition(centerX, BOSS_BAR_Y);
+        float centerX = (settings.getWidth() - Constants.BAR_WIDTH) / 2;
+        castleBar.setPosition(centerX, Constants.CASTLE_BAR_Y);
+        bossBar.setPosition(centerX, Constants.BOSS_BAR_Y);
     }
 
     public void setBoss(Boss boss) {

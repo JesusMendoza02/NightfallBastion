@@ -39,12 +39,7 @@ public class Main extends SimpleApplication {
     private boolean gameOver = false;
     private boolean gameWon = false;
 
-    private static final float MOVE_SPEED = 8.0f;
-    private static final float ROTATION_SPEED = 10.0f;
-    private static final float CAMERA_HEIGHT = 8f;
-    private static final float CAMERA_FOLLOW_SPEED = 5.0f;
-    private static final float CAMERA_ANGLE_DEGREES = 50f;
-
+   
     @Override
     public void simpleInitApp() {
         initializeGame();
@@ -105,9 +100,9 @@ public class Main extends SimpleApplication {
     }
 
     private void setupOptimalCamera() {
-        float radians = FastMath.DEG_TO_RAD * CAMERA_ANGLE_DEGREES;
-        float distance = CAMERA_HEIGHT / FastMath.sin(radians);
-        float height = CAMERA_HEIGHT;
+        float radians = FastMath.DEG_TO_RAD * Constants.CAMERA_ANGLE_DEGREES;
+        float distance = Constants.CAMERA_HEIGHT / FastMath.sin(radians);
+        float height = Constants.CAMERA_HEIGHT;
         float horizontalOffset = distance * FastMath.cos(radians);
 
         Vector3f cameraOffset = new Vector3f(0, height, horizontalOffset);
@@ -119,7 +114,7 @@ public class Main extends SimpleApplication {
             Math.abs(Constants.MAP_MAX_X - Constants.MAP_MIN_X),
             Math.abs(Constants.MAP_MAX_Z - Constants.MAP_MIN_Z)
         );
-        float optimalFOV = 2 * FastMath.atan(mapSize / (2 * CAMERA_HEIGHT)) * FastMath.RAD_TO_DEG * 1.1f;
+        float optimalFOV = 2 * FastMath.atan(mapSize / (2 * Constants.CAMERA_HEIGHT)) * FastMath.RAD_TO_DEG * 1.1f;
         optimalFOV = FastMath.clamp(optimalFOV, 30f, 90f);
         cam.setFrustumPerspective(optimalFOV, (float) cam.getWidth() / cam.getHeight(), 0.1f, 1000f);
     }
@@ -269,7 +264,7 @@ public class Main extends SimpleApplication {
         }
 
         walkDirection.set(0, 0, 0);
-        float moveSpeed = MOVE_SPEED * tpf;
+        float moveSpeed = Constants.PLAYER_MOVE_SPEED * tpf;
 
         if (moveUp) walkDirection.z -= 1;
         if (moveDown) walkDirection.z += 1;
@@ -306,16 +301,16 @@ public class Main extends SimpleApplication {
 
     private void updateCamera(float tpf) {
         currentPlayerPos.set(player.getModel().getWorldTranslation());
-        float radians = FastMath.DEG_TO_RAD * CAMERA_ANGLE_DEGREES;
-        float distance = CAMERA_HEIGHT / FastMath.sin(radians);
+        float radians = FastMath.DEG_TO_RAD * Constants.CAMERA_ANGLE_DEGREES;
+        float distance = Constants.CAMERA_HEIGHT / FastMath.sin(radians);
         float horizontalOffset = distance * FastMath.cos(radians);
 
         Vector3f desiredCamPos = new Vector3f(
             currentPlayerPos.x,
-            CAMERA_HEIGHT,
+            Constants.CAMERA_HEIGHT,
             currentPlayerPos.z + horizontalOffset
         );
-        Vector3f newPos = cam.getLocation().interpolateLocal(desiredCamPos, CAMERA_FOLLOW_SPEED * tpf);
+        Vector3f newPos = cam.getLocation().interpolateLocal(desiredCamPos, Constants.CAMERA_FOLLOW_SPEED * tpf);
 
         newPos.x = FastMath.clamp(newPos.x, Constants.MAP_MIN_X, Constants.MAP_MAX_X);
         newPos.z = FastMath.clamp(newPos.z, Constants.MAP_MIN_Z, Constants.MAP_MAX_Z);
