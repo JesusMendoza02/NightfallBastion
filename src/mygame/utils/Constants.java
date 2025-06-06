@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Constants {
     // Límites del mapa para el jugador (ajusta según tu mapa)
-    public static final float MAP_MIN_X = -8f;
+    public static final float MAP_MIN_X = -8.0f;
     public static final float MAP_MAX_X = 8f;
     public static final float MAP_MIN_Z = -8f;
     public static final float MAP_MAX_Z = 10f;
